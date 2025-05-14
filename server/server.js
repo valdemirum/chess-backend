@@ -19,13 +19,13 @@ myIo(io);
 
 console.log(`Server listening on port ${process.env.PORT}`);
 
-// const Handlebars = handlebars.create({
-//   extname: '.html', 
-//   partialsDir: path.join(__dirname, '..', 'front', 'views', 'partials'), 
-//   defaultLayout: false,
-//   helpers: {}
-// });
-// app.engine('html', Handlebars.engine);
+const Handlebars = handlebars.create({
+  extname: '.html', 
+  partialsDir: path.join(__dirname, '..', 'front', 'views', 'partials'), 
+  defaultLayout: false,
+  helpers: {}
+});
+app.engine('html', Handlebars.engine);
 // app.set('view engine', 'html');
 // app.set('views', path.join(__dirname, '..', 'front', 'views'));
 // app.use('/public', express.static(path.join(__dirname, '..', 'front', 'public')));

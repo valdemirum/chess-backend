@@ -14,7 +14,7 @@ require('dotenv').config();
 app.use(express.json());
 
 // Set up routes under /api
-app.use('/api', routes);
+app.use('/', routes);
 
 // Global games object for WebSocket game state
 global.games = {};

@@ -16,7 +16,7 @@ const io = socketIo(server, {
 });
 
 app.use(cors({
-  origin: ['https://your-frontend-domain.com', 'http://localhost:3000'],
+  origin: ['https://chessgame-85747.vercel.app/', 'http://localhost:3000'],
   credentials: true
 }));
 app.use(express.json());

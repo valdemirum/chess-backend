@@ -21,7 +21,7 @@ app.use(cors({
 }));
 
 // API routes
-app.use('/api', routes);
+app.use('/', routes);
 
 // Global state
 global.games = {};

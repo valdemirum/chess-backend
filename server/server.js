@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -11,12 +9,16 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: '*',         // 👈 VERY IMPORTANT FOR RENDER
-    methods: ['GET', 'POST']
+    origin: ['https://your-frontend-domain.com', 'http://localhost:3000'], // Replace with your frontend URL
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 
-app.use(cors());           // 👈 Also allow CORS for HTTP
+app.use(cors({
+  origin: ['https://your-frontend-domain.com', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -38,4 +40,5 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log('Socket.IO version:', socketIo.version);
 });

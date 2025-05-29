@@ -21,25 +21,21 @@
 //         });
 //     });
 // };
-
 module.exports = app => {
 
     app.get('/', (req, res) => {
-        res.render('index');
+        res.json({ message: 'Welcome to the API root' });
     });
 
     app.get('/white', (req, res) => {
-        res.render('game', {
-            color: 'white'
-        });
+        res.json({ color: 'white', message: 'White player joined' });
     });
+
     app.get('/black', (req, res) => {
         if (!games[req.query.code]) {
-            return res.redirect('/?error=invalidCode');
+            return res.status(400).json({ error: 'Invalid code' });
         }
 
-        res.render('game', {
-            color: 'black'
-        });
+        res.json({ color: 'black', message: 'Black player joined' });
     });
 };
